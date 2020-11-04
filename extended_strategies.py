@@ -31,7 +31,7 @@ class Hard(Strategy):
         self.gaveUp = False
 
     def getAction(self, tick):
-        print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ", self.myPast)
+        # print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ", self.myPast)
         if tick == 0:
             return "D"
 
@@ -58,7 +58,7 @@ class Tester4(Strategy):
         self.gaveUp = False
 
     def getAction(self, tick):
-        print("Tester gave up: ", self.gaveUp)
+        # print("Tester gave up: ", self.gaveUp)
         if tick == 0 or tick == 1:
             return "C"
         if tick == 2 or tick == 3:
@@ -84,27 +84,48 @@ class Tester4(Strategy):
 
 
 class TftWithThreshold(Strategy):
-    def __init__(self):
+    def __init__(self, game):
         super().__init__()
         self.name = "tft+threshold"
         self.hisPast = ""
         self.myPast = ""
         self.gaveUp = False
+        self.game = game
+        self.score = 0
 
     def getAction(self, tick):
-        print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ", self.myPast)
+        # First round
         if tick == 0:
-            return "D"
+            return "C"
 
-        if self.gaveUp or self.hisPast[-1] != "C":
-            self.gaveUp = True
+        # Every 5th round
+        if tick % 5 == 0:
+            # Calculate if average payoff is above or equals 2
+            match_length = len(self.myPast)
+            average_payoff = self.score / match_length
+            print("Round: ", match_length, " Payoff: ", average_payoff)
+            if average_payoff < 2:  # 2 = threshold
+                self.gaveUp = True
+
+        if self.gaveUp:
             return "P"
-        else:
-            return "D"
+
+        # Normal Tft behaviour
+        return self.hisPast[-1]
 
     def clone(self):
-        return Hard()
+        return TftWithThreshold(self.game)
 
     def update(self, my, his):
+        my_payoff = [[payoff[0] for payoff in self.game.scores[0]], [payoff[0] for payoff in self.game.scores[1]],
+                     [payoff[0] for payoff in self.game.scores[2]]]
+        if his == "C" and my == "C":
+            self.score += my_payoff[0][0]
+        elif his == "D" and my == "D":
+            self.score += my_payoff[1][1]
+        elif his == "C" and my == "D":
+            self.score += my_payoff[1][0]
+        elif his == "P" or my == "P":
+            self.score += my_payoff[2][2]
         self.myPast += my
         self.hisPast += his
