@@ -146,3 +146,59 @@ class Second(Strategy):
             score_list.append(my_payoff[2][2])
         self.myPast += my
         self.hisPast += his
+
+
+class Third(Strategy):
+    def __init__(self):
+        super().__init__()
+        self.name = "third"
+        self.hisPast = ""
+        self.myPast = ""
+        self.gaveUp = False
+        self.score = 0
+
+        self.possible_states = ["calm", "irritated", "furious"]
+        self.state = 0
+        self.defection_counter = 0
+        self.cooperation_counter = 0
+
+    def getAction(self, tick):
+        if self.gaveUp:
+            return "P"
+        # First round
+        if tick == 0:
+            return "C"
+
+        # Get irritated or furious if not furious
+        if self.hisPast[-1] == "D" and self.possible_states[self.state] != "furious":
+            self.state += 1
+        elif self.hisPast[-1] == "C" and self.possible_states[self.state] == "irritated":
+            self.state -= 1
+            return "C"
+
+        if self.possible_states[self.state] == "calm" or self.possible_states[self.state] == "irritated":
+            return self.hisPast[-1]
+        elif self.possible_states[self.state] == "furious":
+            if self.hisPast[-1] == "D":
+                self.defection_counter += 1
+            elif self.hisPast[-1] == "C":
+                self.cooperation_counter += 1
+            if self.defection_counter == 12:
+                if self.cooperation_counter < self.defection_counter:
+                    self.gaveUp = True
+                else:
+                    self.state -= 1
+                    return "C"
+            return "D"
+        # Tit for Tat
+
+        if self.gaveUp:
+            return "P"
+        # Normal Tft behaviour
+
+    def clone(self):
+        return Third()
+
+    def update(self, my, his):
+        self.myPast += my
+        self.hisPast += his
