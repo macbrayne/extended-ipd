@@ -42,6 +42,12 @@ class Meeting(Evaluator):
         for tick in range(0, self.length):
             c1 = self.s1.getAction(tick).upper()
             c2 = self.s2.getAction(tick).upper()
+
+            if c1 == "P":
+                c2 = "P"
+            elif c2 == "P":
+                c1 = "P"
+
             if c1 == "C":
                 self.nb_cooperation_s1 += 1
             if c2 == "C":

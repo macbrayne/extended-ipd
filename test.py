@@ -1,9 +1,9 @@
 from ipd import *
-from strategies import *
+from extended_strategies import *
 
 
 def run_tournament(bag):
-    t = Tournament(g, bag)  # default: length=1000
+    t = Tournament(g, bag, length=10)  # default: length=1000
     t.run()
     print(t.matrix)
     return t
@@ -20,20 +20,11 @@ def plot_eco(t):
 """
 First tournament
 """
-bag = [Periodic("P"), Periodic("D"), Tft(), Periodic("C"), Spiteful()]
-t = run_tournament(bag)
-plot_eco(t)
+tester = Tester_4()
+hard = Hard()
+#bag = [tester, hard]
+#t = run_tournament(bag)
+#plot_eco(t)
 
-"""
-Second tournament
-"""
-bag = [Periodic("CCD"), Periodic("D"), Tft(), Periodic("C"), Spiteful(), SoftMajority()]
-t = run_tournament(bag)
-plot_eco(t)
-
-"""
-Third tournament
-"""
-bag = [Periodic("D"), Tft(), Spiteful(), HardMajority()]
-t = run_tournament(bag)
-plot_eco(t)
+m = Meeting(g, tester, hard, 10)
+m.run()
