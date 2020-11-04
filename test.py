@@ -20,7 +20,7 @@ def plot_eco(t):
 """
 First tournament
 """
-tester = Tester_4()
+tester = Tester4()
 hard = Hard()
 #bag = [tester, hard]
 #t = run_tournament(bag)

@@ -31,7 +31,7 @@ class Hard(Strategy):
         self.gaveUp = False
 
     def getAction(self, tick):
-        print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ",self.myPast)
+        print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ", self.myPast)
         if tick == 0:
             return "D"
 
@@ -49,8 +49,7 @@ class Hard(Strategy):
         self.hisPast += his
 
 
-
-class Tester_4(Strategy):
+class Tester4(Strategy):
     def __init__(self):
         super().__init__()
         self.name = "tester-4"
@@ -77,7 +76,34 @@ class Tester_4(Strategy):
         return "C"
 
     def clone(self):
-        return Tester_4()
+        return Tester4()
+
+    def update(self, my, his):
+        self.myPast += my
+        self.hisPast += his
+
+
+class TftWithThreshold(Strategy):
+    def __init__(self):
+        super().__init__()
+        self.name = "tft+threshold"
+        self.hisPast = ""
+        self.myPast = ""
+        self.gaveUp = False
+
+    def getAction(self, tick):
+        print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ", self.myPast)
+        if tick == 0:
+            return "D"
+
+        if self.gaveUp or self.hisPast[-1] != "C":
+            self.gaveUp = True
+            return "P"
+        else:
+            return "D"
+
+    def clone(self):
+        return Hard()
 
     def update(self, my, his):
         self.myPast += my
