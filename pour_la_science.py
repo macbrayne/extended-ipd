@@ -34,7 +34,7 @@ class First(Strategy):
             # Start retaliation
             self.period_of_retaliation += 1
             self.retaliation_counter = self.period_of_retaliation * (self.period_of_retaliation + 1) / 2 + 2
-            print(self.retaliation_counter)
+            # print(self.retaliation_counter)
 
         if self.retaliation_counter > 2:
             self.retaliation_counter -= 1
@@ -109,8 +109,8 @@ class Second(Strategy):
             # Average payoff by state
             average_payoff = {}
             for possible_state in enumerate(self.possible_states):
-                print("State:", possible_state[0])
-                print("Score: ", (self.scores[self.possible_states[possible_state[0]]]))
+                # print("State:", possible_state[0])
+                # print("Score: ", (self.scores[self.possible_states[possible_state[0]]]))
                 average_payoff[possible_state] = (sum(self.scores[self.possible_states[possible_state[0]]]) / 4)
             # Passing
             # Calculate if average payoff is less than 1.5
@@ -119,7 +119,7 @@ class Second(Strategy):
             else:
                 # Choose best strategy
                 self.state = max(average_payoff, key=average_payoff.get)[0]
-                print("State: ", self.state)
+                # print("State: ", self.state)
                 self.state_counter = 12
 
         self.state_counter -= 1
@@ -134,7 +134,7 @@ class Second(Strategy):
                      [payoff[0] for payoff in self.game.scores[2]]]
         score_list = self.scores[self.possible_states[self.state]]
         if len(score_list) > 3:
-            print(self.possible_states[self.state], score_list)
+            # print(self.possible_states[self.state], score_list)
             score_list.pop(0)
         if his == "C" and my == "C":
             score_list.append(my_payoff[0][0])
