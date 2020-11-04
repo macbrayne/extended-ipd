@@ -1,25 +1,7 @@
-import itertools
-import numpy as np
-import collections
-
-
-class Strategy:
-    def setMemory(self, mem):
-        pass
-
-    def getAction(self, tick):
-        pass
-
-    def __copy__(self):
-        pass
-
-    def update(self, x, y):
-        pass
-
-
 """
 I defect if the other player cooperates. If he defects once, I give up.
 """
+from strategies import Strategy
 
 
 class Hard(Strategy):
