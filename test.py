@@ -3,7 +3,7 @@ from extended_strategies import *
 
 
 def run_tournament(bag):
-    t = Tournament(g, bag, length=10)  # default: length=1000
+    t = Tournament(g, bag, length=1000)  # default: length=1000
     t.run()
     print(t.matrix)
     return t
@@ -22,9 +22,8 @@ First tournament
 """
 tester = Tester4()
 hard = Hard()
-#bag = [tester, hard]
-#t = run_tournament(bag)
-#plot_eco(t)
+tft = TftWithThreshold(g)
 
-m = Meeting(g, tester, hard, 10)
-m.run()
+bag = [tester, hard, tft]
+t = run_tournament(bag)
+plot_eco(t)
