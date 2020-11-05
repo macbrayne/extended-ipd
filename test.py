@@ -1,6 +1,7 @@
 from ipd import *
 from extended_strategies import *
 from pour_la_science import First, Second, Third
+from strategies import Tft, Periodic, Spiteful, HardMajority
 
 
 def run_tournament(bag):
@@ -18,20 +19,26 @@ def plot_eco(t):
 
 # bag=[Periodic("D"), HardMajority(), Tft(), Spiteful(),  Gradual()]
 # bag=[Periodic("C"), Periodic("D"), Tft(), Periodic("CCD")]
-"""
-First tournament
-"""
+
 tester = Tester4()
 hard = Hard()
 tft = TftWithThreshold(g)
 first = First(g)
 second = Second(g)
 third = Third()
-
+"""
+First tournament
+"""
 bag = [first, second, hard, tft, tester, third]
 t = run_tournament(bag)
 plot_eco(t)
 
-# m = Meeting(g, second, tft, 1000)
-# m.run()
-# print("Scores: [", m.s1_score, ",", m.s2_score, "]")
+"""
+Second tournament
+
+Note that Tft, a good strategy from the iterated prisoner's dilemma does quite well and reaches a stable population
+"""
+# bag = [first, second, Tft(), Periodic("C"), third]
+bag = [first, second, tft, third, Tft(), Periodic("D")]
+t = run_tournament(bag)
+plot_eco(t)
