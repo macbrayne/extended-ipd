@@ -163,6 +163,7 @@ class Third(Strategy):
         self.possible_states = ["calm", "irritated", "furious"]
         self.state = 0
         self.defection_counter = 0
+        self.defections_in_a_row = 0
         self.cooperation_counter = 0
 
     def getAction(self, tick):
@@ -183,10 +184,11 @@ class Third(Strategy):
             return self.hisPast[-1]
         elif self.possible_states[self.state] == "furious":
             if self.hisPast[-1] == "D":
-                self.defection_counter += 1
+                self.defections_in_a_row += 1
             elif self.hisPast[-1] == "C":
-                self.cooperation_counter += 1
-            if self.defection_counter == 12:
+                self.defections_in_a_row = 0
+            if self.defections_in_a_row == 12:
+                self.defections_in_a_row = 0
                 if self.cooperation_counter < self.defection_counter:
                     self.gaveUp = True
                 else:
@@ -205,3 +207,7 @@ class Third(Strategy):
     def update(self, my, his):
         self.myPast += my
         self.hisPast += his
+        if his[-1] == "D":
+            self.defection_counter += 1
+        elif his[-1] == "C":
+            self.cooperation_counter += 1
