@@ -3,14 +3,25 @@ For more information about the original project visit https://github.com/cristal
 
 [In their paper[1]](#Reference) the authors proposed an interesting extended version of the iterated prisoner's dilemma.
 Unfortunately today no existing project for simulating the prisoner's dilemma has implemented such a variation.
-So I adapted the work from the SMAC team and created a version of their library specifically for simulating the extended version the team proposed 26 year earlier.
+So I adapted the work from the SMAC team and created a version of their library specifically for simulating the extended version the team proposed 26 years earlier.
+
+As a result of using a existing project all classic strategies should remain usable
+and are cross-compatible (untested).
 
 ## Running the experiments
+Running experiments with the extended prisoner's dilemma:
 ```bash
-python ./test.py
+python ./extended_tests.py
 ```
 
-I've implememted the following six strategies from [[1]](#Reference):
+Running experiments with the iterated prisoner's dilemma
+```bash
+python ./classic_tests.py
+```
+
+## Strategies
+
+I've implemented the following six strategies from [[1]](#Reference):
 * Hard,
 * Tester-4,
 * Tit-for-Tat-with-Threshold,
