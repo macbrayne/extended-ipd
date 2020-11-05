@@ -13,6 +13,9 @@ class Hard(Strategy):
         self.gaveUp = False
 
     def getAction(self, tick):
+        if self.gaveUp:
+            return "P"
+
         # print("Hard gave up: ", self.gaveUp, " Tester history: ", self.hisPast, " Hard history ", self.myPast)
         if tick == 0:
             return "D"
@@ -40,6 +43,9 @@ class Tester4(Strategy):
         self.gaveUp = False
 
     def getAction(self, tick):
+        if self.gaveUp:
+            return "P"
+
         # print("Tester gave up: ", self.gaveUp)
         if tick == 0 or tick == 1:
             return "C"
@@ -76,6 +82,9 @@ class TftWithThreshold(Strategy):
         self.score = 0
 
     def getAction(self, tick):
+        if self.gaveUp:
+            return "P"
+
         # First round
         if tick == 0:
             return "C"
@@ -87,6 +96,7 @@ class TftWithThreshold(Strategy):
             average_payoff = self.score / match_length
             # print("Round: ", match_length, " Payoff: ", average_payoff)
             if average_payoff < 2:  # 2 = threshold
+                print("Gave up")
                 self.gaveUp = True
 
         if self.gaveUp:

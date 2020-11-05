@@ -82,6 +82,9 @@ class Second(Strategy):
         self.scores = {"tft": [], "all-c": [], "spiteful": [], "periodic-ccd": []}
 
     def getAction(self, tick):
+        if self.gaveUp:
+            return "P"
+
         result = ""
         # Strategies:
         if self.possible_states[self.state] == "tft":
