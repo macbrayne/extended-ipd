@@ -32,6 +32,6 @@ bag = [first, second, hard, tft, tester, third]
 t = run_tournament(bag)
 plot_eco(t)
 
-#m = Meeting(g, second, tft, 1000)
-#m.run()
-#print("Scores: [", m.s1_score, ",", m.s2_score, "]")
+# m = Meeting(g, second, tft, 1000)
+# m.run()
+# print("Scores: [", m.s1_score, ",", m.s2_score, "]")
