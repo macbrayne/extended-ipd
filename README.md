@@ -8,15 +8,21 @@ So I adapted the work from the SMAC team and created a version of their library 
 As a result of using a existing project all classic strategies should remain usable
 and are cross-compatible (untested).
 
+# Installation
+To use the library or run the experiments you first have to install ```matplotlib```, ```pandas``` and ```numpy```. This can be accomplished using pip:
+```
+$ pip3 install numpy pandas matplotlib
+```
+
 ## Running the experiments
 Running experiments with the extended prisoner's dilemma:
 ```bash
-python ./extended_tests.py
+$ python ./extended_tests.py
 ```
 
 Running experiments with the iterated prisoner's dilemma
 ```bash
-python ./classic_tests.py
+$ python ./classic_tests.py
 ```
 
 ## Strategies
