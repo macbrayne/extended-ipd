@@ -36,7 +36,7 @@ plot_eco(t)
 """
 Second tournament
 
-Note that Tft, a good strategy from the iterated prisoner's dilemma does quite well and reaches a stable population
+Note that Tft, a good strategy from the iterated prisoner's dilemma, does quite well and reaches a stable population
 """
 # bag = [first, second, Tft(), Periodic("C"), third]
 bag = [first, second, tft, third, Tft(), Periodic("D")]
