@@ -42,3 +42,11 @@ Note that Tft, a good strategy from the iterated prisoner's dilemma, does quite 
 bag = [first, second, tft, third, Tft(), Periodic("D")]
 t = run_tournament(bag)
 plot_eco(t)
+
+
+"""
+Third tournament
+"""
+bag = [first, second, hard, tft, third]
+t = run_tournament(bag)
+plot_eco(t)
