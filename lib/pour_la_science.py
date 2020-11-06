@@ -1,4 +1,4 @@
-from strategies import Strategy
+from lib.strategies import Strategy
 
 
 class First(Strategy):

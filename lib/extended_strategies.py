@@ -1,7 +1,7 @@
 """
 I defect if the other player cooperates. If he defects once, I give up.
 """
-from strategies import Strategy
+from lib.strategies import Strategy
 
 
 class Hard(Strategy):

@@ -1,5 +1,5 @@
-from ipd import *
-from strategies import *
+from lib.ipd import *
+from lib.strategies import *
 
 
 def run_tournament(bag):

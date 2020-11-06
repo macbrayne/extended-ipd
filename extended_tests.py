@@ -1,7 +1,7 @@
-from ipd import *
-from extended_strategies import *
-from pour_la_science import First, Second, Third
-from strategies import Tft, Periodic, Spiteful, HardMajority
+from lib.ipd import *
+from lib.extended_strategies import *
+from lib.pour_la_science import First, Second, Third
+from lib.strategies import Tft, Periodic
 
 
 def run_tournament(bag):

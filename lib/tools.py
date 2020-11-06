@@ -1,8 +1,4 @@
-import pandas as pd
-import numpy as np
-import random
-import itertools
-from ipd import *
+from lib.ipd import *
 
 
 # Toutes les combinaisons de n stratégies prises dans la soupe

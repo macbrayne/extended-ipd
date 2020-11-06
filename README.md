@@ -38,9 +38,9 @@ The latter three were the winners of a tournament held in cooperation with Pour 
 
 ## Using the new strategies
 ```python
-from ipd import *
-from extended_strategies import *
-from pour_la_science import *
+from lib.ipd import *
+from lib.extended_strategies import *
+from lib.pour_la_science import *
 
 bag=[First(g), Second(g), Third(), Hard(), Tester4(), TftWithThreshold(g)]
 t= Tournament(g,bag)        # default: length=1000

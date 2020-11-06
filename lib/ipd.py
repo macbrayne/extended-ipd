@@ -3,13 +3,10 @@ import numpy as np
 import copy
 import math
 import matplotlib.pyplot as plt
-import statistics
-import random
-import itertools
 # import datetime
 import multiprocessing as multip
 
-import game
+from lib import game
 
 scores = [(3, 3), (0, 5), (2, 2), \
           (5, 0), (1, 1), (2, 2), \
