@@ -94,9 +94,7 @@ class TftWithThreshold(Strategy):
             # Calculate if average payoff is above or equals 2
             match_length = len(self.myPast)
             average_payoff = self.score / match_length
-            # print("Round: ", match_length, " Payoff: ", average_payoff)
             if average_payoff < 2:  # 2 = threshold
-                print("Gave up")
                 self.gaveUp = True
 
         if self.gaveUp:
