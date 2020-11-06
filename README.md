@@ -1,12 +1,11 @@
 # IPD : the Extended Iterated Prisoner's Dilemma
 For more information about the original project visit https://github.com/cristal-smac/ipd
 
-[In their paper[1]](#Reference) the authors proposed an interesting extended version of the iterated prisoner's dilemma.
-Unfortunately today no existing project for simulating the prisoner's dilemma has implemented such a variation.
-So I adapted the work from the SMAC team and created a version of their library specifically for simulating the extended version the team proposed 26 years earlier.
+[In their paper[1]](#Reference) the authors propose an interesting extended version of the iterated prisoner's dilemma.
+However no existing project for simulating the prisoner's dilemma has implemented such a variation.
+I adapted the work from the SMAC team and created a version of their library specifically for simulating the extended version of the prisoner's dilemma.
 
-As a result of using a existing project all classic strategies should remain usable
-and are cross-compatible (untested).
+As a result of using a existing project all classic strategies should remain functional and are cross-compatible.
 
 # Installation
 To use the library or run the experiments you first have to install ```matplotlib```, ```pandas``` and ```numpy```. This can be accomplished using pip:
@@ -14,13 +13,13 @@ To use the library or run the experiments you first have to install ```matplotli
 $ pip3 install numpy pandas matplotlib
 ```
 
-## Running the experiments
-Running experiments with the extended prisoner's dilemma:
+## Running example experiments
+Running the experiments using the newly implemented strategies:
 ```bash
 $ python ./extended_tests.py
 ```
 
-Running experiments with the iterated prisoner's dilemma
+Running the experiments using the original strategies
 ```bash
 $ python ./classic_tests.py
 ```
