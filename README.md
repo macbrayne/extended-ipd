@@ -52,4 +52,4 @@ e.drawPlot()
 ```
 
 # Reference
-[1] Delahaye, J. & Mathieu, P., 1994. ‘Complex Strategies in the Iterated Prisoner's Dilemma’, Proceedings of the 1994 Chaos and Society conference, Hull, Canada, 1st–2nd Juli 1994. pp 283–292.
+[1] Delahaye, J. & Mathieu, P., 1994. ‘Complex Strategies in the Iterated Prisoner's Dilemma’, Proceedings of the 1994 Chaos and Society conference, Hull, Canada, July the 1st–2nd 1994. pp 283–292.
